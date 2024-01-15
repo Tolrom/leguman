@@ -1,0 +1,9 @@
+{
+    "name": "test/leguman",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}
