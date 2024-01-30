@@ -11,22 +11,32 @@ const body = document.querySelector('body'),
 burger.addEventListener('click', () => {
     if (shop.style.transform == 'translateX(60vw)') {
         nav.style.transform = 'translateX(0)';
-        body.style.overflow = 'hidden';
+        body.style.overflowY = 'hidden';
+    }
+    else {
+        shop.style.transform = 'translateX(60vw)';
+        nav.style.transform = 'translateX(0)';
+        body.style.overflowY = 'hidden';
     }
 });
 shopBouton.addEventListener('click', () => {
     if (nav.style.transform == 'translateX(-60vw)') {
         shop.style.transform = 'translateX(0)';
-        body.style.overflow = 'hidden';
+        body.style.overflowY = 'hidden';
+    }
+    else {
+        nav.style.transform = 'translateX(-60vw)';
+        shop.style.transform = 'translateX(0)';
+        body.style.overflowY = 'hidden';
     }
 });
 
 // FERMETURE PANIER / NAV
 croixNav.addEventListener('click', () => {
     nav.style.transform = 'translateX(-60vw)';
-    body.style.overflow = 'scroll';
+    body.style.overflowY = 'scroll';
 });
 croixShop.addEventListener('click', () => {
         shop.style.transform = 'translateX(60vw)';
-        body.style.overflow = 'scroll';
+        body.style.overflowY = 'scroll';
 });

@@ -31,6 +31,19 @@ class HomeController
             ['style.css', 'main.css']
         );
     }
+    public function getPaniers()
+    {
+        $error = '';
+        Template::render(
+            'navbar.php',
+            'Les paniers',
+            'vueShop.php',
+            'footer.php',
+            $error,
+            ['script.js', 'main.js'],
+            ['style.css', 'main.css']
+        );
+    }
     public function get404()
     {
         $error = '';
@@ -40,8 +53,8 @@ class HomeController
             'vueError.php',
             'footer.php',
             $error,
-            ['script.js'],
-            ['style.css']
+            ['script.js', 'main.js'],
+            ['style.css', 'main.css']
         );
     }
 }
