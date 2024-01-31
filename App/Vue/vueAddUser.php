@@ -1,6 +1,6 @@
 <?php ob_start() ?>
-<h2>Ajouter un compte utilisateur :</h2>
-<form method="post">
+<h2>INSCRIPTION :</h2>
+<form method="post" id="formConnexion">
     <label class="required" for="nom_utilisateur">Nom :</label>
     <input type="text" name="nom_utilisateur">
     <label class="required" for="prenom_utilisateur">Prénom :</label>

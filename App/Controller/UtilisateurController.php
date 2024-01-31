@@ -62,7 +62,7 @@ class UtilisateurController extends Utilisateur
             'vueAddUser.php',
             'footer.php',
             $error,
-            [],
+            ['main.js'],
             ['main.css']
         );
     }
@@ -137,8 +137,35 @@ class UtilisateurController extends Utilisateur
             'vueUtilisateur.php',
             'footer.php',
             $error,
-            ['main.js'],
-            ['main.css']
+            ['main.js', 'script.js'],
+            ['main.css', 'style.css']
+        );
+    }
+    public function resetPassword(): void
+    {
+        $error = '';
+        if (isset($_POST['reset'])) {
+            if (!empty($_POST["mail_utilisateur"])) {
+                $email = Utilitaire::cleanInput($_POST["mail_utilisateur"]);
+                $this->setMail($email);
+                $recup = $this->getUtilisateurByMail();
+                if ($recup) {
+                    $error = 'Un mail contenant les instructions de récupération vous a été envoyé.';
+                } else {
+                    $error = 'Veuillez renseigner une adresse mail présente dans notre base de données.';
+                }
+            } else {
+                $error = 'Veuillez renseigner une adresse mail';
+            }
+        }
+        Template::render(
+            'navbar.php',
+            'Mot de passe oublié',
+            'vueReset.php',
+            'footer.php',
+            $error,
+            ['main.js', 'script.js'],
+            ['main.css', 'style.css']
         );
     }
 }

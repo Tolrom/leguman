@@ -12,10 +12,10 @@
     border: 0;
 }
 body {
+    display: flex;
     font-family: Quando;
     box-sizing: border-box;
     height: 100%;
-    /* overflow-x: hidden; */
 }
 .bouton {
     text-align: center;
@@ -73,6 +73,7 @@ footer {
     color: white;
     padding: 2em 0;
     text-align: center;
+    margin-top: 5%;
 }
 footer p {
     font-size: small;
@@ -113,8 +114,12 @@ article {
     body {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         height: 100vh;
-        width: 100%;
+        width: 100vw;
+    }
+    main {
+        flex-grow: 1;
     }
     p {
         text-align: justify;
@@ -169,13 +174,16 @@ article {
         margin-bottom: 2vh;
     }
     .separateur {
+        background-color: #593500;
         height: 1px;
         width: 80%;
         align-self: center;
     }
     nav .separateur {
-        background-color: #593500;
         margin: -2vh 0;
+    }
+    #shop section .separateur{
+        margin: 10% 0 5%;
     }
     footer .separateur {
         background-color: white;
@@ -199,7 +207,8 @@ article {
         right: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
+        overflow: scroll;
         transition: transform 0.5s ease-in-out;
     }
     #shop .bouton {
@@ -221,12 +230,23 @@ article {
         content: "*";
         color: red;
     }
+    form {
+        margin: 0 3%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
 
     /* Index */ 
     
     h2 {
         margin: 1em 7vw;
         font-size: 6vw;
+    }
+    .downH2{
+        margin-top: 20%;
     }
     #indexHeader {
         background-image: url(../images/header.jpg);
@@ -330,6 +350,26 @@ article {
     #paniers {
         display: flex;
     }
+    .itemPanier{
+        width: 60vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .itemPanier img{
+        max-width: 75%;
+        object-fit: scale-down;
+    }
+    .itemPanier button {
+        background-color: transparent;
+        font-size: xx-large;
+    }
+    #shop section {
+        max-height: 90vh;
+        align-items: center;
+        overflow: scroll;
+    }
 
     /* Pages produits */
 
@@ -341,7 +381,6 @@ article {
         margin: 3vh 0;
     }
     .backBouton {
-        position: absolute;
         margin: 2vh;
     }
     .backBouton:active svg circle {
@@ -371,9 +410,9 @@ article {
 
     /*  Inscription / Connexion */
 
-    form {
-        height: 75vh;
+    #formConnexion label {
         display: flex;
+<<<<<<< HEAD
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
@@ -383,21 +422,54 @@ article {
     form label {
         display: flex;
         align-items: center;
+=======
+        justify-content: flex-end;
+>>>>>>> 01c323e50a9759bb0a842e2babf8990a91c6708b
         width: 40%;
         padding-left: 2%;
     }
-    form label+input {
+    #formConnexion label+input,
+    #formReset label+input {
         background-color: #96C11F;
         border-radius: 10px;
         border: 1px solid grey;
-        margin: 2% 0;
+        margin: 3% 0;
         padding: 1%;
         width: 50%;
-        height: 10%;
         font-size: large;
     }
-    form .bouton {
+    #formConnexion .bouton {
+        margin-top: 3%;
         width: 80%;
+    }
+    #forgot{
+        background-color: transparent;
+        color: #808080;
+    }
+    #forgot:active{
+        color: black;
+    }
+    #reset {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    #reset a {
+        height: fit-content;
+    }
+    #formReset .bouton {
+        margin-top: 5%;
+    }
+    #formReset label+input{
+        width: 60%;
+    }
+    #login{
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+    }
+    #login a{
+        font-size: small;
     }
 }
 

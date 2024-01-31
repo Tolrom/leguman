@@ -64,7 +64,38 @@
             <line y1="-1.5" x2="41.0122" y2="-1.5" transform="matrix(0.707107 0.707107 0.707107 -0.707107 3 0)"
                 stroke="black" stroke-width="3" />
         </svg>
-        <div class="bouton">Passer commande</div>
+        <section>
+            <?php
+            $total = 0;
+            foreach ($_SESSION['panier'] as $produit): ?>
+                <?php if ($produit['quantite'] > 0): ?>
+                    <article class="itemPanier">
+                        <img src="<?= $produit['image'] ?>" alt="Une illustration de <?= $produit['nom'] ?>">
+                        <h4>
+                            <?= $produit['nom'] ?>
+                        </h4>
+                        <form method="post">
+                            <button type="submit" value="<?= $produit['id'] ?>" name="remove">-</button>
+                        </form>
+                        <h4>
+                            <?= $produit['quantite'] ?>
+                        </h4>
+                        <form method="post">
+                            <button type="submit" value="<?= $produit['id'] ?>" name="add">+</button>
+                        </form>
+                        <h4>
+                            <?= $produit['quantite'] * $produit['prix'] ?>€
+                        </h4>
+                    </article>
+                    <?php $total += $produit['quantite'] * $produit['prix'] ?>
+                <?php endif ?>
+            <?php endforeach ?>
+            <span class="separateur"></span>
+            <h3>TOTAL :
+                <?= $total ?>€
+            </h3>
+            <a href="/leguman/shop/order" class="bouton">Passer commande</a>
+        </section>
     </div>
     <!-- Le header -->
     <header>

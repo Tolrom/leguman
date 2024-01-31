@@ -4,15 +4,41 @@ require_once './env.php';
 require_once './vendor/autoload.php';
 use App\Controller\HomeController;
 use App\Controller\UtilisateurController;
+use App\Controller\ProduitController;
 
 $utilisateurController = new UtilisateurController();
 $homeController = new HomeController();
+$produitController = new ProduitController();
 //utilisation de session_start(pour gérer la connexion au serveur)
 session_start();
-//Analyse de l'URL avec parse_url() et retourne ses composants
+// Gestion du panier
+$produits = $produitController->getAllProduits();
+foreach ($produits as $value) {
+    if (isset($_SESSION['panier'][$value['id_produit']]['quantite'])) {
+        $qt = $_SESSION['panier'][$value['id_produit']]['quantite'];
+    } else {
+        $qt = 0;
+    }
+    $_SESSION['panier'][$value['id_produit']] = [
+        'nom' => $value['nom_produit'],
+        'prix' => $value['prix_produit'],
+        'image' => $value['image_produit'],
+        'quantite' => $qt,
+        'id' => $value['id_produit'],
+    ];
+}
+if (isset($_POST['add'])) {
+    $_SESSION['panier'][$_POST['add']]['quantite']++;
+}
+if (isset($_POST['remove'])) {
+    $_SESSION['panier'][$_POST['remove']]['quantite']--;
+}
+
+//      Analyse de l'URL avec parse_url() et retourne ses composants
 $url = parse_url($_SERVER['REQUEST_URI']);
-//test si l'url posséde une route sinon on renvoi à la racine
+//      Test si l'url possède une route sinon on renvoie à la racine
 $path = isset($url['path']) ? $url['path'] : '/';
+
 //      Routeur connecté
 if (isset($_SESSION["connected"])) {
     switch ($path) {
@@ -33,6 +59,22 @@ if (isset($_SESSION["connected"])) {
             break;
         case '/leguman/utilisateur/infos':
             $utilisateurController->infosUtilisateur();
+            break;
+        case '/leguman/shop':
+            $produitController->showProduits();
+            break;
+        case '/leguman/shop/produit':
+            if (isset($_GET['id'])) {
+                $produitController->showProduit($_GET['id']);
+            } else {
+                header('Location: /leguman/shop');
+            }
+            break;
+        case 'leguman/shop/order':
+            $produitController->orderProduits();
+            break;
+        case '/leguman/utilisateur/reset':
+            $utilisateurController->connexionUtilisateur();
             break;
         default:
             $homeController->get404();
@@ -60,6 +102,23 @@ if (isset($_SESSION["connected"])) {
             break;
         case '/leguman/utilisateur/infos':
             $utilisateurController->addUtilisateur();
+            break;
+        case '/leguman/shop':
+            $produitController->showProduits();
+            break;
+        case '/leguman/shop/produit':
+            if (isset($_GET['id'])) {
+                $produitController->showProduit($_GET['id']);
+            } else {
+                header('Location: /leguman/shop');
+            }
+            break;
+        case '/leguman/utilisateur/reset':
+            $utilisateurController->resetPassword();
+            break;
+        case 'leguman/shop/order':
+            $utilisateurController->connexionUtilisateur();
+            break;
         default:
             $homeController->get404();
             break;
