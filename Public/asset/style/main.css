@@ -378,6 +378,7 @@ article {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
+        margin-bottom: 5%;
     }
     form label {
         display: flex;

@@ -22,7 +22,7 @@ class UtilisateurController extends Utilisateur
                 //                  Tester si les 2 mots de passe correspondent
                 if ($_POST["password_utilisateur"] == $_POST["password_confirm"]) {
                     $mail = Utilitaire::cleanInput($_POST["email_utilisateur"]);
-                    $this->setMail($mail);
+                    $this->setMail($mail); 
                     //                  Test si le compte n'existe pas
                     if (!$this->getUtilisateurByMail()) {
                         //                  Hasher le mot de passe
