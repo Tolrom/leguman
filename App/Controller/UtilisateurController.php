@@ -7,7 +7,6 @@ use App\Vue\Template;
 
 class UtilisateurController extends Utilisateur
 {
-    //Méthodes
     public function addUtilisateur(): void
     {
         $error = "";
@@ -41,12 +40,12 @@ class UtilisateurController extends Utilisateur
                         //                  Redirection
                         header("Refresh:1; url=/leguman");
                     }
-                    //                  Test le compte existe
+                    //                  Test si le compte existe
                     else {
                         $error = "Les informations d'inscription sont incorrectes";
                     }
                 }
-                //                  Cas les mots de passe sont différents
+                //                  Les mots de passe sont différents
                 else {
                     $error = "Les mots de passe sont différents";
                 }
