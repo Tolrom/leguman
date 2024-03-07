@@ -412,19 +412,16 @@ article {
 
     #formConnexion label {
         display: flex;
-<<<<<<< HEAD
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: flex-start;
         align-items: center;
-        margin-bottom: 5%;
+        margin-bottom: 1%;
     }
     form label {
         display: flex;
         align-items: center;
-=======
         justify-content: flex-end;
->>>>>>> 01c323e50a9759bb0a842e2babf8990a91c6708b
         width: 40%;
         padding-left: 2%;
     }
