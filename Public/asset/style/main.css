@@ -482,6 +482,9 @@ article {
         align-items: center;
         z-index: 2;
     }
+    body {
+        display: block;
+    }
     header,
     #navPC,
     ul,
@@ -503,7 +506,7 @@ article {
     }
     header .bouton {
         position: absolute;
-        top: 40vh;
+        top: 1vh;
         left: 42%;
         width: 16%;
     }
