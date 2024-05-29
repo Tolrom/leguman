@@ -67,7 +67,12 @@ class Produit extends BddConnect
     {
         try {
             $requete = $this->connexion()->prepare(
-                'SELECT id_produit, nom_produit, prix_produit, stock_produit, description_produit,image_produit 
+                'SELECT id_produit, 
+                        nom_produit, 
+                        prix_produit, 
+                        stock_produit, 
+                        description_produit,
+                        image_produit 
                 FROM produit
                 WHERE id_produit = ?'
             );
