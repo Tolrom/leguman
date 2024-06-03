@@ -14,8 +14,14 @@ session_start();
 // Gestion du panier
 $produits = $produitController->getAllProduits();
 foreach ($produits as $value) {
-    if (isset($_SESSION['panier'][$value['id_produit']]['quantite'])) {
-        $qt = $_SESSION['panier'][$value['id_produit']]['quantite'];
+    if (isset(
+            $_SESSION['panier']
+                [$value['id_produit']]
+                    ['quantite']
+            )) {
+        $qt = $_SESSION['panier']
+                [$value['id_produit']]
+                    ['quantite'];
     } else {
         $qt = 0;
     }
