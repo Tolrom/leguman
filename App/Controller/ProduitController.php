@@ -7,8 +7,7 @@ use App\Vue\Template;
 
 class ProduitController extends Produit
 {
-    public function showProduits()
-    {
+    public function showProduits() {
         $error = '';
         $data = $this->getAllProduits();
         Template::render(
@@ -22,8 +21,7 @@ class ProduitController extends Produit
             $data
         );
     }
-    public function showProduit($id)
-    {
+    public function showProduit($id) {
         $error = '';
         $panier = $this->getProduitById($id);
         $data = [
