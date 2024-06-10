@@ -1,6 +1,6 @@
 <?php
 require_once './env.php';
-//import de l'autoloader des classes
+// Import de l'autoloader des classes
 require_once './vendor/autoload.php';
 use App\Controller\HomeController;
 use App\Controller\UtilisateurController;
@@ -9,7 +9,7 @@ use App\Controller\ProduitController;
 $utilisateurController = new UtilisateurController();
 $homeController = new HomeController();
 $produitController = new ProduitController();
-//utilisation de session_start(pour gérer la connexion au serveur)
+// Utilisation de session_start(pour gérer la connexion au serveur)
 session_start();
 // Gestion du panier
 $produits = $produitController->getAllProduits();

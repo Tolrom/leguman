@@ -52,8 +52,7 @@ class Produit extends BddConnect
     {
         $this->description_produit = $description;
     }
-    public function getAllProduits(): array
-    {
+    public function getAllProduits(): array {
         try {
             $requete = $this->connexion()->prepare("SELECT * FROM produit");
             $requete->execute();
@@ -63,8 +62,7 @@ class Produit extends BddConnect
             die('Error : ' . $e->getMessage());
         }
     }
-    public function getProduitById($id): Produit|bool
-    {
+    public function getProduitById($id): Produit|bool {
         try {
             $requete = $this->connexion()->prepare(
                 'SELECT id_produit, 
@@ -85,3 +83,5 @@ class Produit extends BddConnect
         }
     }
 }
+
+
